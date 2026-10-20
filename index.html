@@ -22,6 +22,7 @@ body_class: home
     <p class="person-role">{{ me.role }}, {{ me.affiliation }}</p>
     <div class="person-bio">{{ me.bio | markdownify }}</div>
     <ul class="profile-links">
+      {%- if me.url and me.url != "" %}<li><a href="{{ me.url }}">Personal website</a></li>{% endif -%}
       {%- if site.author.scholar != "" %}<li><a href="{{ site.author.scholar }}">Google Scholar</a></li>{% endif -%}
       {%- if site.author.orcid != "" %}<li><a href="https://orcid.org/{{ site.author.orcid }}">ORCID</a></li>{% endif -%}
       <li><a href="mailto:{{ site.author.email }}">Email</a></li>
