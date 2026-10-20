@@ -4,7 +4,7 @@
   role: Postdoctoral researcher, research line lead
   affiliation: Halmstad University
   url: https://adeelzafar.github.io
-  photo: /assets/img/adeel-zafar.jpg   # upload a square photo with exactly this name
+  photo: /assets/img/adeel-zafar.jpeg   # upload a square photo with exactly this name
   home: true                           # show this person on the home page
   bio: |                               # keep it short: shown at the top of the home page
     I am a postdoctoral researcher in machine learning at Halmstad University,
