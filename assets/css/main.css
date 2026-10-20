@@ -256,23 +256,49 @@ mark.leak {
   .note { grid-column: 1; grid-row: 2; }
 }
 
-/* ---------- Home: researcher ---------- */
+/* ---------- Home: researcher, goal, latest paper ---------- */
 .person {
-  display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem 2.5rem;
-  align-items: start; margin-top: 1rem;
+  display: grid; grid-template-columns: 10rem minmax(0, 1fr); gap: 1.5rem 2.5rem;
+  align-items: center; padding-block: clamp(2.5rem, 6vw, 4.5rem);
 }
 .person-no-photo { grid-template-columns: minmax(0, 1fr); }
 .person-photo {
-  width: 11rem; height: 11rem; object-fit: cover; border-radius: 6px;
+  width: 10rem; height: 10rem; object-fit: cover; border-radius: 6px;
   border: 1px solid var(--rule); background: var(--chip);
 }
 .person-text { max-width: var(--measure); }
-.person h2 { margin: 0 0 0.15rem; }
-.person-role { font-family: var(--font-ui); color: var(--muted); font-size: 0.98rem; margin-bottom: 0.9rem; }
-.person-bio p { margin-bottom: 0.8em; }
+.person h1 { font-size: clamp(1.9rem, 3.4vw, 2.4rem); margin: 0 0 0.15rem; }
+.person-role { font-family: var(--font-ui); color: var(--muted); font-size: 1rem; margin-bottom: 0.8rem; }
+.person-bio p { margin-bottom: 0.6em; }
+.person .profile-links { margin-top: 0.4rem; }
+
+.band { background: var(--surface); border-block: 1px solid var(--rule); }
+.band .note-text { background: var(--bg); }
+.goal {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2rem 3.5rem; align-items: center; padding-block: clamp(2.5rem, 5vw, 3.5rem);
+}
+.goal-text p { max-width: 44ch; }
+.eyebrow {
+  font: 600 0.85rem var(--font-ui); text-transform: uppercase; letter-spacing: 0.08em;
+  color: var(--muted); margin: 0 0 0.8rem;
+}
+.goal-statement {
+  font-family: var(--font-ui); font-weight: 700; letter-spacing: -0.02em;
+  font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.15; color: var(--ink);
+  margin-bottom: 0.8rem;
+}
+.goal .hero-links { margin-top: 1.2rem; }
+
+.latest { padding-block: clamp(2.5rem, 5vw, 3.5rem) 0; }
+.latest .paper { border-top: 0; padding-top: 0; }
+
+@media (max-width: 52rem) {
+  .goal { grid-template-columns: 1fr; }
+}
 @media (max-width: 40rem) {
-  .person { grid-template-columns: 1fr; }
-  .person-photo { width: 8.5rem; height: 8.5rem; }
+  .person { grid-template-columns: 1fr; align-items: start; }
+  .person-photo { width: 7.5rem; height: 7.5rem; }
 }
 
 /* ---------- Home: sections ---------- */
