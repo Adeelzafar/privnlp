@@ -30,6 +30,27 @@ body_class: home
   </div>
 </section>
 
+{%- assign me = site.data.team | where: "home", true | first -%}
+{%- if me %}
+{%- assign photo_file = site.static_files | where: "path", me.photo | first -%}
+<section class="wrap section person{% unless photo_file %} person-no-photo{% endunless %}" aria-labelledby="person-h">
+  {%- if photo_file %}
+  <img class="person-photo" src="{{ me.photo | relative_url }}" alt="Portrait of {{ me.name }}" width="176" height="176">
+  {%- endif %}
+  <div class="person-text">
+    <h2 id="person-h">{{ me.name }}</h2>
+    <p class="person-role">{{ me.role }}, {{ me.affiliation }}</p>
+    <div class="person-bio">{{ me.bio | markdownify }}</div>
+    <ul class="profile-links">
+      {%- if me.url and me.url != "" %}<li><a href="{{ me.url }}">Personal website</a></li>{% endif -%}
+      {%- if site.author.scholar != "" %}<li><a href="{{ site.author.scholar }}">Google Scholar</a></li>{% endif -%}
+      {%- if site.author.orcid != "" %}<li><a href="https://orcid.org/{{ site.author.orcid }}">ORCID</a></li>{% endif -%}
+      <li><a href="mailto:{{ site.author.email }}">Email</a></li>
+    </ul>
+  </div>
+</section>
+{%- endif %}
+
 <section class="wrap section" aria-labelledby="themes-h">
   <h2 id="themes-h">Research themes</h2>
   <dl class="themes">
