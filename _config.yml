@@ -18,7 +18,7 @@ repository: Adeelzafar/privnlp      # owner/repo, used for "Edit this page" link
 #   url: https://YOUR-USERNAME.github.io     baseurl: /privnlp
 # User site     (repo named "YOUR-USERNAME.github.io"), or custom domain:
 #   url: https://YOUR-USERNAME.github.io     baseurl: ""
-url: "https://your-github-username.github.io"   # TODO
+url: "https://Adeelzafar.github.io"   # TODO
 baseurl: "/privnlp"                              # TODO
 
 # --- People and links (leave a value empty "" to hide it) ------------
