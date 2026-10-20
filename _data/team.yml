@@ -7,11 +7,17 @@
   photo: /assets/img/adeel-zafar.jpeg   # upload a square photo with exactly this name
   home: true                           # show this person on the home page
   bio: |                               # keep it short: shown at the top of the home page
-    I am a postdoctoral researcher in machine learning at Halmstad University,
-    where I lead the PrivNLP research line. I work on natural language
-    processing, large language models and AI security, after roles in industry
-    red-teaming LLM systems and as associate professor at Riphah International
-    University.
+      bio: |
+    I am a researcher working at the intersection of natural language processing
+    and AI security. I study what language models remember about the people in
+    their training data, how attackers can get it out, and how to stop them.
+    Currently I am a postdoctoral researcher in machine learning at Halmstad
+    University, Sweden. Previously, I was a senior machine learning engineer at
+    Paradigm Networks (2023–2025), where I built PII detection systems for LLMs
+    and led red-teaming of LLM applications, and an associate professor and head
+    of department at Riphah International University (2019–2025). I was a
+    research fellow at NYU Tandon School of Engineering in 2018, and hold a Ph.D.
+    in Machine Learning from National University of Computer and Emerging Sciences.
 - name: Eric Järpe
   role: Collaborator                            # TODO: title
   affiliation: Halmstad University
