@@ -11,7 +11,7 @@ description: >-
   Research on privacy risks and defences for language models, with a focus
   on clinical LLMs, at the School of Information Technology, Halmstad University.
 lang: en
-repository: your-github-username/privnlp      # TODO: owner/repo, used for "Edit this page" links
+repository: Adeelzafar/privnlp      # owner/repo, used for "Edit this page" links
 
 # --- Address ---------------------------------------------------------
 # Project site  (repo "privnlp" under your account):
@@ -24,12 +24,12 @@ baseurl: "/privnlp"                              # TODO
 # --- People and links (leave a value empty "" to hide it) ------------
 author:
   name: Adeel Zafar
-  email: "adeel.zafar@hh.se"           # TODO: confirm address
+  email: "adeel.zafar@hh.se"          
   affiliation: School of Information Technology, Halmstad University, Sweden
-  orcid: ""                            # TODO: e.g. 0000-0002-1825-0097
-  scholar: ""                          # TODO: full Google Scholar profile URL
-  github: "your-github-username"       # TODO: GitHub user or organisation
-  university_page: ""                  # optional: Halmstad profile URL
+  orcid: "0000-0002-4826-7746"         e.g. 0000-0002-1825-0097
+  scholar: "https://scholar.google.com/citations?user=_XrxatIAAAAJ&hl=en"                          full Google Scholar profile URL
+  github: "Adeelzafar"                 # : GitHub user or organisation
+
 
 funding:
   funder: Crafoord Foundation
