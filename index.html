@@ -4,41 +4,21 @@ title: Home
 body_class: home
 ---
 {%- comment -%}
-  Home page. Mission text is in this file; themes come from _data/themes.yml,
-  the featured paper is the first entry in _data/papers.yml with featured: true,
-  and news comes from _posts/.
+  Home page, three blocks:
+  1. About me      → from the person with `home: true` in _data/team.yml
+  2. Research goal → text below (edit freely)
+  3. Latest paper  → the first entry in _data/papers.yml
 {%- endcomment -%}
-<section class="hero wrap" aria-labelledby="mission">
-  <figure class="note">
-    <div class="note-text" aria-hidden="true">
-      <p class="note-head">Discharge summary</p>
-      <p>Patient <span class="redact" style="--w:9ch;--i:0">Johanna Berg</span>, <span class="redact" style="--w:2ch;--i:1">67</span> years, <span class="nowrap">MRN <span class="redact leak-partial" style="--w:4ch;--i:2">4471</span><mark class="leak">-208</mark></span>, admitted <span class="redact" style="--w:5ch;--i:3">03/11</span> with community-acquired pneumonia.</p>
-      <p>Follow-up with Dr <span class="redact" style="--w:7ch;--i:4">Lindqvist</span> at <span class="redact" style="--w:9ch;--i:5">Söderåsen</span> clinic in two weeks.</p>
-    </div>
-    <figcaption>A fictional clinical note. Redaction hides identifiers on the page, but a language model fine-tuned on the note may still remember them.</figcaption>
-  </figure>
-
-  <div class="hero-copy">
-    <h1 id="mission">Language models that learn from clinical text without remembering the patients in it</h1>
-    <p class="lede">
-      {{ site.title }} studies how language models leak personal information, how to measure that leakage, and which defences work. We focus on clinical models and on what GDPR and the EU AI Act ask of them.
-    </p>
-    <p class="hero-links">
-      <a class="button button-primary" href="{{ '/papers/' | relative_url }}">Read the papers</a>
-      <a class="button" href="{{ '/benchmark/' | relative_url }}">See the benchmark</a>
-    </p>
-  </div>
-</section>
 
 {%- assign me = site.data.team | where: "home", true | first -%}
 {%- if me %}
 {%- assign photo_file = site.static_files | where: "path", me.photo | first -%}
-<section class="wrap section person{% unless photo_file %} person-no-photo{% endunless %}" aria-labelledby="person-h">
+<section class="wrap person{% unless photo_file %} person-no-photo{% endunless %}" aria-labelledby="person-h">
   {%- if photo_file %}
   <img class="person-photo" src="{{ me.photo | relative_url }}" alt="Portrait of {{ me.name }}" width="176" height="176">
   {%- endif %}
   <div class="person-text">
-    <h2 id="person-h">{{ me.name }}</h2>
+    <h1 id="person-h">{{ me.name }}</h1>
     <p class="person-role">{{ me.role }}, {{ me.affiliation }}</p>
     <div class="person-bio">{{ me.bio | markdownify }}</div>
     <ul class="profile-links">
@@ -51,36 +31,32 @@ body_class: home
 </section>
 {%- endif %}
 
-<section class="wrap section" aria-labelledby="themes-h">
-  <h2 id="themes-h">Research themes</h2>
-  <dl class="themes">
-    {%- for t in site.data.themes %}
-    <div><dt>{{ t.name }}</dt><dd>{{ t.text }}</dd></div>
-    {%- endfor %}
-  </dl>
+<section class="band" aria-labelledby="goal-h">
+  <div class="wrap goal">
+    <div class="goal-text">
+      <h2 id="goal-h" class="eyebrow">Research goal</h2>
+      <p class="goal-statement">Language models that learn from clinical text without remembering the patients in it.</p>
+      <p>We measure how language models leak personal information and test which defences work, with a focus on clinical models and the GDPR and EU AI Act.</p>
+      <p class="hero-links">
+        <a class="button" href="{{ '/benchmark/' | relative_url }}">The benchmark</a>
+        <a class="button" href="{{ '/about/' | relative_url }}">About the group</a>
+      </p>
+    </div>
+    <figure class="note">
+      <div class="note-text" aria-hidden="true">
+        <p class="note-head">Discharge summary</p>
+        <p>Patient <span class="redact" style="--w:9ch;--i:0">Johanna Berg</span>, <span class="redact" style="--w:2ch;--i:1">67</span> years, <span class="nowrap">MRN <span class="redact leak-partial" style="--w:4ch;--i:2">4471</span><mark class="leak">-208</mark></span>, admitted <span class="redact" style="--w:5ch;--i:3">03/11</span> with pneumonia.</p>
+      </div>
+      <figcaption>Redacted on the page, but a model trained on it may still remember.</figcaption>
+    </figure>
+  </div>
 </section>
 
-<div class="wrap section home-split">
-  <section aria-labelledby="featured-h">
-    <h2 id="featured-h">Featured paper</h2>
-    {%- assign featured = site.data.papers | where: "featured", true | first -%}
-    {%- if featured -%}
-      {% include paper.html paper=featured heading="h3" %}
-    {%- else -%}
-      <p>No featured paper yet. Set <code>featured: true</code> on a paper in <code>_data/papers.yml</code>.</p>
-    {%- endif -%}
-  </section>
-
-  <section aria-labelledby="news-h">
-    <h2 id="news-h">Latest news</h2>
-    <ul class="news-list">
-      {%- for post in site.posts limit:4 %}
-      <li>
-        <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
-        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-      </li>
-      {%- endfor %}
-    </ul>
-    <p><a href="{{ '/news/' | relative_url }}">All news</a></p>
-  </section>
-</div>
+{%- assign latest = site.data.papers | first -%}
+{%- if latest %}
+<section class="wrap latest" aria-labelledby="latest-h">
+  <h2 id="latest-h" class="eyebrow">Latest paper</h2>
+  {% include paper.html paper=latest heading="h3" %}
+  <p><a href="{{ '/papers/' | relative_url }}">All papers</a></p>
+</section>
+{%- endif %}
