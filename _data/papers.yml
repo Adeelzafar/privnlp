@@ -58,11 +58,11 @@
     the input deviates from the clean text they were built for, and what the
     resulting gaps mean for privacy in practice.
   links:
-    pdf: ""                        # e.g. /assets/pdf/zafar2026mindthegap.pdf
+    pdf: "https://arxiv.org/pdf/2609.03464"                        # e.g. /assets/pdf/zafar2026mindthegap.pdf
     code: ""
     dataset: ""
     doi: ""
-    arxiv: ""
+    arxiv: "2609.03464"
 
 # ---------------------------------------------------------------------
 # TEMPLATE (copy, paste at the top, remove the leading "# ")
