@@ -1,0 +1,88 @@
+# =====================================================================
+#  PLANTED-PATIENT LEAKAGE BENCHMARK
+#  `metrics` defines the table columns (edit rarely).
+#  `results` holds one row per model × defence. To add a result, copy a
+#  row and fill in the numbers. Leave a value as null to show "—".
+#  Percentages are entered as numbers (12.5 means 12.5 %).
+# =====================================================================
+
+metrics:
+  - id: leak_members
+    label: Leak rate (members)
+    short: Leak (M)
+    unit: "%"
+    better: lower
+    description: >-
+      Share of planted training patients whose name and condition appear
+      together in sampled outputs.
+  - id: leak_nonmembers
+    label: Leak rate (non-members)
+    short: Leak (NM)
+    unit: "%"
+    better: lower
+    description: >-
+      The same measure for held-out planted patients never seen in training.
+      This is the chance baseline: the gap to members is the memorization signal.
+  - id: exact_id
+    label: Exact identifier reproduction
+    short: Exact ID
+    unit: "%"
+    better: lower
+    description: >-
+      Share of planted patients for whom an identifier (for example a record
+      number or date of birth) is reproduced character for character.
+  - id: assoc_precision
+    label: Association precision
+    short: Assoc. prec.
+    unit: "%"
+    better: lower
+    description: >-
+      Of all patient–condition pairs the model emits for planted patients,
+      the share that match the planted record.
+  - id: attack_cost
+    label: Attack cost
+    short: Cost
+    unit: " queries"
+    better: higher
+    description: >-
+      Median number of model queries needed to recover one correct
+      patient–condition association.
+  - id: mia_auc
+    label: PHI-token membership inference AUC
+    short: MIA AUC
+    unit: ""
+    better: lower
+    description: >-
+      Area under the ROC curve for distinguishing members from non-members
+      using the model's loss on PHI tokens. 0.5 means no better than chance.
+  - id: tpr_1fpr
+    label: TPR at 1 % FPR
+    short: TPR@1%
+    unit: "%"
+    better: lower
+    description: >-
+      True positive rate of the membership attack when only 1 % of
+      non-members may be wrongly flagged. Captures confident, low-error leaks.
+
+results:
+  # Rows below are placeholders that will be filled when paper 1 is public.
+  - model: Clinical LLM, QLoRA fine-tuned     # TODO: exact model name
+    defence: None
+    source: zafar2026askleaks                 # id from papers.yml
+    date: ""
+    results: { leak_members: null, leak_nonmembers: null, exact_id: null,
+               assoc_precision: null, attack_cost: null, mia_auc: null, tpr_1fpr: null }
+  - model: Clinical LLM, QLoRA fine-tuned
+    defence: Output filtering
+    source: zafar2026askleaks
+    date: ""
+    results: { leak_members: null, leak_nonmembers: null, exact_id: null,
+               assoc_precision: null, attack_cost: null, mia_auc: null, tpr_1fpr: null }
+
+  # Example of a completed row (numbers are illustrative):
+  # - model: Llama-3.1-8B-Instruct, QLoRA r=16
+  #   defence: None
+  #   source: zafar2026askleaks
+  #   date: 2026-11-02
+  #   results: { leak_members: 23.4, leak_nonmembers: 1.2, exact_id: 8.0,
+  #              assoc_precision: 61.5, attack_cost: 42, mia_auc: 0.81, tpr_1fpr: 17.3 }

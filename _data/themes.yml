@@ -1,0 +1,13 @@
+# Research themes on the home page.
+- name: Memorization and extraction
+  text: When and how fine-tuned models reproduce training records, and what it costs an attacker to get them out.
+- name: Membership inference
+  text: Testing whether a specific patient was in the training data, with attention to low false-positive rates.
+- name: Robust PII detection
+  text: Where detectors of personal identifiers fail on noisy, varied or adversarial text.
+- name: De-identification
+  text: Removing or replacing identifiers in clinical text while keeping it useful.
+- name: Synthetic data
+  text: Benchmarks built from fictional patients so that privacy can be measured without exposing real ones.
+- name: EU regulation
+  text: Turning GDPR and EU AI Act requirements into measurable tests for language models.

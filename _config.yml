@@ -1,0 +1,84 @@
+# =====================================================================
+#  PrivNLP site settings
+#  Most day-to-day edits happen in _data/*.yml, _posts/ and _tutorials/.
+#  After changing THIS file, GitHub rebuilds the site automatically;
+#  when previewing locally, restart `bundle exec jekyll serve`.
+# =====================================================================
+
+title: PrivNLP
+subtitle: Privacy-Preserving Natural Language Processing
+description: >-
+  Research on privacy risks and defences for language models, with a focus
+  on clinical LLMs, at the School of Information Technology, Halmstad University.
+lang: en
+repository: your-github-username/privnlp      # TODO: owner/repo, used for "Edit this page" links
+
+# --- Address ---------------------------------------------------------
+# Project site  (repo "privnlp" under your account):
+#   url: https://YOUR-USERNAME.github.io     baseurl: /privnlp
+# User site     (repo named "YOUR-USERNAME.github.io"), or custom domain:
+#   url: https://YOUR-USERNAME.github.io     baseurl: ""
+url: "https://your-github-username.github.io"   # TODO
+baseurl: "/privnlp"                              # TODO
+
+# --- People and links (leave a value empty "" to hide it) ------------
+author:
+  name: Adeel Zafar
+  email: "adeel.zafar@hh.se"           # TODO: confirm address
+  affiliation: School of Information Technology, Halmstad University, Sweden
+  orcid: ""                            # TODO: e.g. 0000-0002-1825-0097
+  scholar: ""                          # TODO: full Google Scholar profile URL
+  github: "your-github-username"       # TODO: GitHub user or organisation
+  university_page: ""                  # optional: Halmstad profile URL
+
+funding:
+  funder: Crafoord Foundation
+  funder_url: https://www.crafoord.se
+  project: >-
+    Trustworthy Clinical AI: EU-Compliant Synthetic Data Benchmarking and
+    Privacy Risk Mitigation for LLMs
+  grant: "20260614"
+
+# --- Analytics: GoatCounter (cookie-free, no consent banner needed) ---
+# Sign up at https://www.goatcounter.com, pick a code (e.g. "privnlp"),
+# and put it here. Leave empty to disable analytics entirely.
+goatcounter: ""                        # TODO
+
+# --- Build settings (no need to change) -------------------------------
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  hard_wrap: false
+highlighter: rouge
+permalink: /news/:year/:month/:title/
+timezone: Europe/Stockholm
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+collections:
+  tutorials:
+    output: true
+    permalink: /tutorials/:name/
+
+defaults:
+  - scope: { path: "" }
+    values: { layout: page }
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+  - scope: { path: "", type: tutorials }
+    values: { layout: tutorial }
+
+feed:
+  path: news/feed.xml
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .github
+  - LICENSE

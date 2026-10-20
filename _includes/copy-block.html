@@ -1,0 +1,11 @@
+{%- comment -%}
+  A collapsible, copyable text block (BibTeX, citations).
+  Params: id, label, text
+{%- endcomment -%}
+<details class="copy-block">
+  <summary>{{ include.label }}</summary>
+  <div class="copy-block-body">
+    <pre id="{{ include.id }}"><code>{{ include.text | strip | escape }}</code></pre>
+    <button class="button button-small" type="button" data-copy="{{ include.id }}" aria-label="Copy {{ include.label }} to clipboard">Copy</button>
+  </div>
+</details>

@@ -1,0 +1,43 @@
+{%- assign p = include.paper -%}
+{%- assign hl = include.heading | default: "h3" -%}
+{%- assign authors_str = p.authors | join: " " -%}
+{%- assign search_text = p.title | append: " " | append: p.abstract | append: " " | append: p.venue | append: " " | append: authors_str | downcase -%}
+{%- assign bib_id = p.id | append: "-bib" -%}
+<article class="paper" id="{{ p.id }}"
+  data-year="{{ p.year }}" data-status="{{ p.status }}"
+  data-topics="{{ p.topics | join: '|' | downcase }}"
+  data-text="{{ search_text | strip_newlines | escape }}">
+  <{{ hl }} class="paper-title">{{ p.title | strip }}</{{ hl }}>
+  <p class="paper-authors">
+    {%- for a in p.authors -%}
+      {%- if a == site.author.name -%}<span class="self">{{ a }}</span>{%- else -%}{{ a }}{%- endif -%}
+      {%- unless forloop.last -%}, {% endunless -%}
+    {%- endfor -%}
+  </p>
+  <p class="paper-venue">
+    {% include status.html status=p.status %}
+    {% if p.venue != "" and p.venue %}<span>{{ p.venue }}, {{ p.year }}</span>{% else %}<span>{{ p.year }}</span>{% endif %}
+  </p>
+  {%- if p.topics.size > 0 %}
+  <ul class="tags" aria-label="Topics">
+    {%- for t in p.topics -%}
+    <li><a href="{{ '/papers/' | relative_url }}?topic={{ t | downcase | url_encode }}">{{ t }}</a></li>
+    {%- endfor -%}
+  </ul>
+  {%- endif %}
+  <details class="abstract"{% if include.open %} open{% endif %}>
+    <summary>Abstract</summary>
+    <p>{{ p.abstract | strip }}</p>
+  </details>
+  <div class="paper-actions">
+    {%- assign L = p.links -%}
+    {%- if L.pdf != "" and L.pdf -%}{%- assign pdf = L.pdf -%}{%- if pdf contains "://" -%}{%- else -%}{%- assign pdf = pdf | relative_url -%}{%- endif -%}<a class="button" href="{{ pdf }}">PDF</a>{%- endif -%}
+    {%- if L.code != "" and L.code -%}<a class="button" href="{{ L.code }}">Code</a>{%- endif -%}
+    {%- if L.dataset != "" and L.dataset -%}<a class="button" href="{{ L.dataset }}">Dataset</a>{%- endif -%}
+    {%- if L.doi != "" and L.doi -%}<a class="button" href="https://doi.org/{{ L.doi }}">DOI</a>{%- endif -%}
+    {%- if L.arxiv != "" and L.arxiv -%}<a class="button" href="https://arxiv.org/abs/{{ L.arxiv }}">arXiv</a>{%- endif -%}
+  </div>
+  {%- if p.release_note %}<p class="release-note">{{ p.release_note }}</p>{% endif %}
+  {% include bibtex.html paper=p %}
+  {% include copy-block.html id=bib_id label="BibTeX" text=bibtex_out %}
+</article>

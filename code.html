@@ -1,0 +1,33 @@
+---
+layout: page
+title: Code
+permalink: /code/
+prose: false
+intro: Open-source repositories from the research line. Code for papers under review is released when the paper is accepted.
+---
+{%- comment -%} Content comes from _data/code.yml. {%- endcomment -%}
+<ul class="entry-list">
+{%- for r in site.data.code %}
+  {%- assign repo_url = "https://github.com/" | append: r.repo -%}
+  <li class="entry" id="{{ r.name }}">
+    <h2 class="entry-title">
+      {%- if r.status == "available" -%}<a href="{{ repo_url }}">{{ r.name }}</a>{%- else -%}{{ r.name }}{%- endif -%}
+    </h2>
+    <p>{{ r.description | strip }}</p>
+    <dl class="meta-row">
+      <div><dt>Status</dt><dd>{% include status.html status=r.status %}</dd></div>
+      <div><dt>Language</dt><dd>{{ r.language }}</dd></div>
+      <div><dt>Licence</dt><dd>{{ r.licence }}</dd></div>
+      {%- if r.paper -%}
+        {%- assign rp = site.data.papers | where: "id", r.paper | first -%}
+        {%- if rp %}<div><dt>Paper</dt><dd><a href="{{ '/papers/' | relative_url }}#{{ rp.id }}">{{ rp.title | truncatewords: 6 }}</a></dd></div>{% endif -%}
+      {%- endif -%}
+    </dl>
+    {%- if r.status == "available" %}
+    <p><a class="button" href="{{ repo_url }}">View on GitHub</a></p>
+    {%- elsif r.release_note and r.release_note != "" %}
+    <p class="release-note">{{ r.release_note }}</p>
+    {%- endif %}
+  </li>
+{%- endfor %}
+</ul>

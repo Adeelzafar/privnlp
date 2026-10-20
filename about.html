@@ -1,0 +1,39 @@
+---
+layout: page
+title: About
+permalink: /about/
+prose: false
+---
+<div class="prose">
+  <p>{{ site.title }} is a five-year research line on privacy risks and defences for language models at the School of Information Technology, Halmstad University, Sweden. We study how models memorize and leak personal information, how to test for it, and how to build models, datasets and detectors that meet the requirements of the GDPR and the EU AI Act. Our main application area is clinical text.</p>
+</div>
+
+<h2 id="team">Team</h2>
+<ul class="team">
+  {%- for m in site.data.team %}
+  <li>
+    {%- if m.photo and m.photo != "" %}<img src="{{ m.photo | relative_url }}" alt="" width="72" height="72" loading="lazy">{% endif %}
+    <div>
+      <p class="team-name">{% if m.url and m.url != "" %}<a href="{{ m.url }}">{{ m.name }}</a>{% else %}{{ m.name }}{% endif %}</p>
+      <p class="team-role">{{ m.role }}, {{ m.affiliation }}</p>
+    </div>
+  </li>
+  {%- endfor %}
+</ul>
+
+<h2 id="funding">Funding</h2>
+<div class="prose">
+  <p>This research is funded by the <a href="{{ site.funding.funder_url }}">{{ site.funding.funder }}</a> through the project “{{ site.funding.project | strip }}” (grant no. {{ site.funding.grant }}).</p>
+  <p class="small">Suggested acknowledgement text for papers: “This work was supported by the {{ site.funding.funder }} under grant no. {{ site.funding.grant }}.”</p>
+</div>
+
+<h2 id="contact">Contact</h2>
+<div class="prose">
+  <p>{{ site.author.name }}<br>{{ site.author.affiliation }}<br><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></p>
+</div>
+{% include profile-links.html %}
+
+<h2 id="privacy">Privacy on this site</h2>
+<div class="prose">
+  <p>This site sets no cookies and loads no third-party fonts or trackers. {% if site.goatcounter != "" %}Visits are counted with <a href="https://www.goatcounter.com">GoatCounter</a>, which records page views without storing IP addresses or personal identifiers. {% endif %}The site is hosted on GitHub Pages; GitHub may log visitor IP addresses for security purposes, as described in its privacy statement.</p>
+</div>

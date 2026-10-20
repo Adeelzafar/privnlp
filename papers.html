@@ -1,0 +1,57 @@
+---
+layout: page
+title: Research papers
+permalink: /papers/
+prose: false
+intro: Publications and manuscripts from the research line. Each entry has its abstract, links and a ready-to-copy BibTeX entry.
+---
+{%- comment -%} Content comes from _data/papers.yml. Nothing to edit here. {%- endcomment -%}
+{%- assign papers = site.data.papers -%}
+{%- assign all_topics = "" | split: "" -%}
+{%- for p in papers -%}{%- assign all_topics = all_topics | concat: p.topics -%}{%- endfor -%}
+{%- assign all_topics = all_topics | uniq | sort_natural -%}
+{%- assign years = papers | map: "year" | uniq | sort | reverse -%}
+
+<form class="filters" id="paper-filter" role="search" aria-label="Filter papers">
+  <div class="field field-grow">
+    <label for="f-q">Search</label>
+    <input id="f-q" name="q" type="search" placeholder="Title, author, abstract" autocomplete="off">
+  </div>
+  <div class="field">
+    <label for="f-year">Year</label>
+    <select id="f-year" name="year">
+      <option value="">All years</option>
+      {%- for y in years %}<option value="{{ y }}">{{ y }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="f-topic">Topic</label>
+    <select id="f-topic" name="topic">
+      <option value="">All topics</option>
+      {%- for t in all_topics %}<option value="{{ t | downcase }}">{{ t }}</option>{% endfor %}
+    </select>
+  </div>
+  <div class="field">
+    <label for="f-status">Status</label>
+    <select id="f-status" name="status">
+      <option value="">Any status</option>
+      <option value="published">Published</option>
+      <option value="accepted">Accepted</option>
+      <option value="under-review">Under review</option>
+      <option value="preprint">Preprint</option>
+    </select>
+  </div>
+  <button class="button" type="reset">Clear</button>
+</form>
+<p class="filter-count" id="paper-count" aria-live="polite">{{ papers.size }} papers</p>
+
+{%- assign groups = papers | group_by: "year" | sort: "name" | reverse -%}
+{%- for g in groups %}
+<section class="year-group" data-year-group="{{ g.name }}" aria-labelledby="y{{ g.name }}">
+  <h2 class="year-heading" id="y{{ g.name }}">{{ g.name }}</h2>
+  {%- for p in g.items %}
+    {% include paper.html paper=p heading="h3" %}
+  {%- endfor %}
+</section>
+{%- endfor %}
+<p class="empty-state" id="paper-empty" hidden>No papers match these filters. Clear the filters to see all papers.</p>

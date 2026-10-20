@@ -1,0 +1,47 @@
+---
+layout: page
+title: Datasets
+permalink: /datasets/
+prose: false
+intro: Datasets for measuring privacy leakage in language models. Check each licence before use.
+---
+{%- comment -%} Content comes from _data/datasets.yml. {%- endcomment -%}
+{%- assign real = site.data.datasets | where: "synthetic", false -%}
+{%- if real.size == 0 %}
+<p class="notice notice-synthetic"><strong>All datasets on this page are synthetic.</strong> They describe fictional people and contain no real patient data.</p>
+{%- endif %}
+
+{%- for d in site.data.datasets %}
+<article class="entry dataset" id="{{ d.id }}">
+  <h2 class="entry-title">{{ d.name }}</h2>
+  <p class="licence-line">
+    Licence: <a href="{{ d.licence_url }}"><strong>{{ d.licence }}</strong></a>
+    {% include status.html status=d.status %}
+  </p>
+  {%- if d.licence_note %}<p class="licence-note">{{ d.licence_note | strip }}</p>{% endif %}
+  {%- if d.synthetic %}
+  <p class="notice notice-synthetic"><strong>Synthetic data.</strong> {{ d.synthetic_note | strip }}</p>
+  {%- endif %}
+  <p>{{ d.description | strip }}</p>
+  <dl class="meta-row">
+    <div><dt>Size</dt><dd>{{ d.size }}</dd></div>
+    <div><dt>Format</dt><dd>{{ d.format }}</dd></div>
+    {%- if d.derived_from %}<div><dt>Derived from</dt><dd><a href="{{ d.derived_from.url }}">{{ d.derived_from.name }}</a></dd></div>{% endif -%}
+    {%- if d.paper -%}
+      {%- assign dp = site.data.papers | where: "id", d.paper | first -%}
+      {%- if dp %}<div><dt>Paper</dt><dd><a href="{{ '/papers/' | relative_url }}#{{ dp.id }}">{{ dp.title | truncatewords: 6 }}</a></dd></div>{% endif -%}
+    {%- endif -%}
+  </dl>
+  {%- if d.status == "available" %}
+  <div class="paper-actions">
+    {%- if d.download != "" %}<a class="button button-primary" href="{{ d.download }}">Download</a>{% endif -%}
+    {%- if d.documentation != "" -%}{%- assign doc = d.documentation -%}{%- unless doc contains "://" -%}{%- assign doc = doc | relative_url -%}{%- endunless -%}<a class="button" href="{{ doc }}">Datasheet</a>{%- endif -%}
+    {%- if d.doi != "" %}<a class="button" href="https://doi.org/{{ d.doi }}">DOI</a>{% endif -%}
+  </div>
+  {%- elsif d.release_note %}
+  <p class="release-note">{{ d.release_note }}</p>
+  {%- endif %}
+  {%- assign cite_id = d.id | append: "-cite" -%}
+  {% include copy-block.html id=cite_id label="Citation" text=d.citation %}
+</article>
+{%- endfor %}

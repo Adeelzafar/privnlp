@@ -1,0 +1,34 @@
+# =====================================================================
+#  CODE — one entry per GitHub repository.
+#  `repo` is "owner/name"; the link is built automatically.
+#  `status: planned` shows the entry without a link.
+# =====================================================================
+
+- name: clinical-llm-leakage
+  repo: your-github-username/clinical-llm-leakage     # TODO
+  status: planned
+  release_note: Public on acceptance of the paper.
+  description: >-
+    Full pipeline for the planted-patient benchmark: data generation, QLoRA
+    fine-tuning, sampling, scoring, targeted attacks, membership inference,
+    output filtering and figure scripts.
+  language: Python
+  licence: TODO                    # e.g. MIT or Apache-2.0
+  paper: zafar2026askleaks
+
+- name: pii-robustness
+  repo: your-github-username/pii-robustness           # TODO, or delete this entry
+  status: planned
+  release_note: ""
+  description: >-
+    Robustness tests for PII detection systems from the SHIELD 2026 paper.
+  language: Python
+  licence: TODO
+  paper: zafar2026mindthegap
+
+- name: privnlp
+  repo: your-github-username/privnlp                  # TODO
+  status: available
+  description: Source of this website. Content lives in plain YAML and Markdown files.
+  language: HTML / Liquid
+  licence: MIT

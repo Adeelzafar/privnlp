@@ -1,0 +1,8 @@
+- { title: Home,       url: / }
+- { title: Papers,     url: /papers/ }
+- { title: Code,       url: /code/ }
+- { title: Datasets,   url: /datasets/ }
+- { title: Benchmark,  url: /benchmark/ }
+- { title: Tutorials,  url: /tutorials/ }
+- { title: News,       url: /news/ }
+- { title: About,      url: /about/ }

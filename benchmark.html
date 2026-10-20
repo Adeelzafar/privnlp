@@ -1,0 +1,87 @@
+---
+layout: page
+title: Planted-patient leakage benchmark
+permalink: /benchmark/
+prose: false
+intro: A benchmark for measuring how much a fine-tuned clinical language model reveals about specific patients in its training data.
+---
+{%- comment -%}
+  Prose below is Markdown inside a capture block: edit it freely.
+  Metrics and results come from _data/benchmark.yml.
+{%- endcomment -%}
+{%- capture method -%}
+## How it works
+
+We plant fictional patients into a clinical fine-tuning corpus. Each planted patient has identifiers (name, record number, date of birth) and an associated condition. Half of them go into the training set as **members**; the other half are held out as **non-members** and never seen by the model.
+
+After fine-tuning, we attack the model in two ways:
+
+1. **Asking**: targeted prompts that name a patient and ask about them, the way a curious user or insider might.
+2. **Sampling**: drawing many unprompted or lightly prompted generations and searching them for planted patients.
+
+Comparing members with non-members separates genuine memorization from lucky guesses. All patients are synthetic, so the benchmark can be shared openly without exposing anyone.
+
+## What we measure
+{%- endcapture -%}
+<div class="prose">{{ method | markdownify }}</div>
+
+{%- assign B = site.data.benchmark %}
+<dl class="metric-defs">
+  {%- for m in B.metrics %}
+  <div>
+    <dt>{{ m.label }} <span class="dir">({{ m.better }} is better)</span></dt>
+    <dd>{{ m.description | strip }}</dd>
+  </div>
+  {%- endfor %}
+</dl>
+<p class="small">“Better” is from the defender’s side: a good defence lowers leakage and raises attack cost.</p>
+
+<h2 id="results">Results</h2>
+{%- assign filled = 0 -%}
+{%- for r in B.results -%}{%- for m in B.metrics -%}{%- if r.results[m.id] != nil -%}{%- assign filled = filled | plus: 1 -%}{%- endif -%}{%- endfor -%}{%- endfor -%}
+{%- if filled == 0 %}
+<p class="notice">Results will be published here together with the paper. Configurations under evaluation are listed below.</p>
+{%- endif %}
+
+<div class="table-scroll" role="region" aria-labelledby="results-caption" tabindex="0">
+<table class="results sortable">
+  <caption id="results-caption">Leakage by model and defence. Select a column heading to sort. A dash means not yet measured.</caption>
+  <thead>
+    <tr>
+      <th scope="col"><button type="button" data-sort="text">Model</button></th>
+      <th scope="col"><button type="button" data-sort="text">Defence</button></th>
+      {%- for m in B.metrics %}
+      <th scope="col" class="num"><button type="button" data-sort="num" title="{{ m.label }} ({{ m.better }} is better)">{{ m.short }} <span class="dir-icon" aria-hidden="true">{% if m.better == "lower" %}↓{% else %}↑{% endif %}</span><span class="visually-hidden">, {{ m.better }} is better</span></button></th>
+      {%- endfor %}
+      <th scope="col">Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    {%- for r in B.results %}
+    <tr>
+      <th scope="row">{{ r.model }}</th>
+      <td>{{ r.defence }}</td>
+      {%- for m in B.metrics %}
+        {%- assign v = r.results[m.id] -%}
+        {%- if v == nil %}
+      <td class="num" data-value=""><span aria-hidden="true">—</span><span class="visually-hidden">not measured</span></td>
+        {%- else %}
+      <td class="num" data-value="{{ v }}">{{ v }}{{ m.unit }}</td>
+        {%- endif -%}
+      {%- endfor %}
+      <td>
+        {%- assign sp = site.data.papers | where: "id", r.source | first -%}
+        {%- if sp %}<a href="{{ '/papers/' | relative_url }}#{{ sp.id }}">{{ sp.authors | first | split: " " | last }} {{ sp.year }}</a>{% else %}{{ r.source }}{% endif -%}
+      </td>
+    </tr>
+    {%- endfor %}
+  </tbody>
+</table>
+</div>
+
+{%- capture contrib -%}
+## Adding a model or defence
+
+Every row comes from a run of the public evaluation code with the same planted-patient split and the same attack budget. If you want a model or defence evaluated, or have run the benchmark yourself, [email us](mailto:{{ site.author.email }}) with the configuration and the output files.
+{%- endcapture -%}
+<div class="prose">{{ contrib | markdownify }}</div>

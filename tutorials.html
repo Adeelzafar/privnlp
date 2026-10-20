@@ -1,0 +1,20 @@
+---
+layout: page
+title: Tutorials
+permalink: /tutorials/
+prose: false
+intro: Hands-on guides to the methods we use. Each one is a single Markdown file in the _tutorials folder.
+---
+{%- assign tuts = site.tutorials | sort: "order" -%}
+<ul class="entry-list">
+{%- for t in tuts %}
+  <li class="entry">
+    <h2 class="entry-title"><a href="{{ t.url | relative_url }}">{{ t.title }}</a></h2>
+    <p>{{ t.summary }}</p>
+    <dl class="meta-row">
+      {%- if t.level %}<div><dt>Level</dt><dd>{{ t.level }}</dd></div>{% endif -%}
+      {%- if t.time %}<div><dt>Time</dt><dd>{{ t.time }}</dd></div>{% endif -%}
+    </dl>
+  </li>
+{%- endfor %}
+</ul>

@@ -1,0 +1,27 @@
+---
+layout: default
+---
+<div class="wrap">
+  <article class="tutorial">
+    <header class="page-head">
+      <p class="crumb"><a href="{{ '/tutorials/' | relative_url }}">Tutorials</a></p>
+      <h1>{{ page.title }}</h1>
+      {%- if page.summary %}<p class="lede">{{ page.summary }}</p>{% endif %}
+      <dl class="meta-row">
+        {%- if page.level %}<div><dt>Level</dt><dd>{{ page.level }}</dd></div>{% endif -%}
+        {%- if page.time %}<div><dt>Time</dt><dd>{{ page.time }}</dd></div>{% endif -%}
+        {%- if page.requires %}<div><dt>You need</dt><dd>{{ page.requires }}</dd></div>{% endif -%}
+        {%- if page.last_updated %}<div><dt>Updated</dt><dd>{{ page.last_updated | date: "%-d %B %Y" }}</dd></div>{% endif -%}
+      </dl>
+    </header>
+    <div class="prose">
+      {{ content }}
+    </div>
+    <footer class="tutorial-foot">
+      <a href="{{ '/tutorials/' | relative_url }}">All tutorials</a>
+      {%- if site.repository %}
+      <a href="https://github.com/{{ site.repository }}/edit/main/{{ page.path }}">Suggest an edit on GitHub</a>
+      {%- endif %}
+    </footer>
+  </article>
+</div>

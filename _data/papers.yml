@@ -1,0 +1,84 @@
+# =====================================================================
+#  PAPERS — newest first. To add a paper, copy the template at the
+#  bottom of this file to the TOP of the list and fill it in.
+#  BibTeX is generated automatically from these fields, unless you
+#  paste your own entry under `bibtex:`.
+# =====================================================================
+
+- id: zafar2026askleaks            # unique, also used as the BibTeX key
+  title: >-
+    Ask and It Won't Tell, Sample and It Leaks: Patient–Condition
+    Leakage in Fine-Tuned Clinical Large Language Models
+  authors:
+    - Adeel Zafar                  # TODO: full author list in order
+  venue: ""                        # filled in once accepted
+  year: 2026
+  status: under-review             # published | accepted | under-review | preprint
+  type: unpublished                # article | inproceedings | unpublished | misc
+  featured: true                   # shown on the home page
+  topics: [memorization, membership inference, clinical LLMs, synthetic data]
+  # TODO: replace with the submitted abstract.
+  abstract: >-
+    Fine-tuned clinical language models are often judged safe because they
+    refuse direct questions about the patients in their training data. We
+    test that assumption with a benchmark of synthetic patients planted in a
+    clinical fine-tuning corpus and compare targeted questioning with
+    unprompted sampling. We measure how often planted patient–condition
+    associations reappear, whether exact identifiers are reproduced, what an
+    attack costs, and how well membership inference on PHI tokens separates
+    training members from non-members, and we evaluate output filtering as
+    a mitigation.
+  release_note: Code and the planted-patient dataset will be released on acceptance.
+  links:
+    pdf: ""
+    code: ""
+    dataset: ""
+    doi: ""
+    arxiv: ""
+
+- id: zafar2026mindthegap
+  title: "Mind the Gap: Robustness Risks in PII Detection Systems"
+  authors:
+    - Adeel Zafar                  # TODO: full author list in order
+  venue: SHIELD Workshop at ECML PKDD   # the year is added automatically
+  booktitle: >-
+    Proceedings of the SHIELD Workshop at the European Conference on Machine
+    Learning and Principles and Practice of Knowledge Discovery in Databases
+    (ECML PKDD)
+  year: 2026
+  status: accepted                 # change to "published" when proceedings appear
+  type: inproceedings
+  featured: false
+  topics: [PII detection, robustness, de-identification]
+  # TODO: replace with the paper's abstract.
+  abstract: >-
+    Automated detection of personally identifiable information (PII) is a
+    common first line of defence before text is shared or used to train
+    language models. This paper examines how robust such detectors are when
+    the input deviates from the clean text they were built for, and what the
+    resulting gaps mean for privacy in practice.
+  links:
+    pdf: ""                        # e.g. /assets/pdf/zafar2026mindthegap.pdf
+    code: ""
+    dataset: ""
+    doi: ""
+    arxiv: ""
+
+# ---------------------------------------------------------------------
+# TEMPLATE (copy, paste at the top, remove the leading "# ")
+# - id: lastnameYEARkeyword
+#   title: "Paper title"
+#   authors: [First Author, Adeel Zafar]
+#   venue: Short venue name shown on the site
+#   booktitle: Full proceedings name (inproceedings only)
+#   journal: Journal name (article only)
+#   year: 2027
+#   status: published
+#   type: inproceedings
+#   featured: false
+#   topics: [membership inference]
+#   abstract: >-
+#     One paragraph.
+#   links: { pdf: "", code: "", dataset: "", doi: "", arxiv: "" }
+#   bibtex: |                      # optional: overrides the generated entry
+#     @inproceedings{...}

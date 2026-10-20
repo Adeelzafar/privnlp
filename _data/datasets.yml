@@ -1,0 +1,41 @@
+# =====================================================================
+#  DATASETS. `synthetic: true` shows a prominent "no real patients" notice.
+#  `status: planned` hides download buttons and shows `release_note`.
+# =====================================================================
+
+- id: planted-patients
+  name: Planted-Patient Clinical Leakage Dataset
+  status: planned                  # available | planned
+  release_note: Released together with the paper on acceptance.
+  synthetic: true
+  synthetic_note: >-
+    Every patient, identifier and record in this dataset is fictional. The
+    clinical notes come from Asclepius, which consists of synthetic notes,
+    and the planted patients were generated programmatically. No real
+    patient data is included.
+  description: >-
+    Clinical notes with synthetic patients planted into them, split into
+    training members and held-out non-members, for measuring memorization,
+    patient–condition leakage and membership inference in fine-tuned
+    clinical language models.
+  size: "TODO"                     # e.g. "2,000 planted patients · 48 MB"
+  format: "TODO"                   # e.g. "JSONL"
+  licence: CC BY-NC-SA 4.0
+  licence_url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+  licence_note: >-
+    Inherits the licence of the Asclepius synthetic notes it is derived from:
+    attribution required, non-commercial use only, derivatives under the same licence.
+  derived_from:
+    name: Asclepius synthetic clinical notes
+    url: https://huggingface.co/datasets/starmpcc/Asclepius-Synthetic-Clinical-Notes
+  download: ""                     # e.g. Zenodo record URL
+  doi: ""
+  documentation: ""                # datasheet page, e.g. /datasets/planted-patients-datasheet/
+  paper: zafar2026askleaks         # id from papers.yml
+  citation: |
+    @misc{zafar2026plantedpatients,
+      title  = {Planted-Patient Clinical Leakage Dataset},
+      author = {Zafar, Adeel},
+      year   = {2026},
+      note   = {Synthetic dataset, CC BY-NC-SA 4.0}
+    }

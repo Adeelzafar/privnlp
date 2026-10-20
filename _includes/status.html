@@ -1,0 +1,12 @@
+{%- comment -%} Usage: {% include status.html status="under-review" %} {%- endcomment -%}
+{%- case include.status -%}
+  {%- when "published" -%}{%- assign s_label = "Published" -%}
+  {%- when "accepted" -%}{%- assign s_label = "Accepted" -%}
+  {%- when "under-review" -%}{%- assign s_label = "Under review" -%}
+  {%- when "preprint" -%}{%- assign s_label = "Preprint" -%}
+  {%- when "available" -%}{%- assign s_label = "Available" -%}
+  {%- when "planned" -%}{%- assign s_label = "Not yet released" -%}
+  {%- when "pending" -%}{%- assign s_label = "Pending" -%}
+  {%- else -%}{%- assign s_label = include.status -%}
+{%- endcase -%}
+<span class="status status-{{ include.status }}">{{ s_label }}</span>

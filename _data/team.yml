@@ -1,0 +1,19 @@
+# Order here is the order on the About page. Photos are optional:
+# put a square image in assets/img/ and set `photo: /assets/img/name.jpg`.
+- name: Adeel Zafar
+  role: Researcher, research line lead          # TODO: confirm title
+  affiliation: Halmstad University
+  url: ""
+  photo: ""
+- name: Eric Järpe
+  role: Collaborator                            # TODO: title
+  affiliation: Halmstad University
+  url: ""
+- name: Sławomir Nowaczyk
+  role: Collaborator                            # TODO: title
+  affiliation: Halmstad University
+  url: ""
+- name: Nuwan Gunasekara
+  role: Collaborator                            # TODO: title
+  affiliation: Halmstad University
+  url: ""

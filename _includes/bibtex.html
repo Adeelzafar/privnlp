@@ -1,0 +1,36 @@
+{%- comment -%}
+  Builds a BibTeX entry from a paper in _data/papers.yml.
+  Output is stored in the variable `bibtex_out`.
+  If the paper has its own `bibtex:` field, that is used verbatim.
+{%- endcomment -%}
+{%- assign p = include.paper -%}
+{%- if p.bibtex -%}
+  {%- assign bibtex_out = p.bibtex -%}
+{%- else -%}
+  {%- assign lb = "{" -%}{%- assign rb = "}" -%}
+  {%- assign btype = p.type | default: "misc" -%}
+  {%- capture bibtex_out -%}
+@{{ btype }}{{ lb }}{{ p.id }},
+  title     = {{ lb }}{{ p.title | strip }}{{ rb }},
+  author    = {{ lb }}{{ p.authors | join: " and " }}{{ rb }},
+{%- if btype == "inproceedings" %}
+  booktitle = {{ lb }}{{ p.booktitle | default: p.venue | strip }}{{ rb }},
+{%- elsif btype == "article" %}
+  journal   = {{ lb }}{{ p.journal | default: p.venue | strip }}{{ rb }},
+{%- endif %}
+  year      = {{ lb }}{{ p.year }}{{ rb }},
+{%- if p.links.doi and p.links.doi != "" %}
+  doi       = {{ lb }}{{ p.links.doi }}{{ rb }},
+{%- endif %}
+{%- if p.links.arxiv and p.links.arxiv != "" %}
+  eprint    = {{ lb }}{{ p.links.arxiv }}{{ rb }},
+  archivePrefix = {{ lb }}arXiv{{ rb }},
+{%- endif %}
+{%- if p.status == "under-review" %}
+  note      = {{ lb }}Under review{{ rb }},
+{%- elsif p.status == "accepted" %}
+  note      = {{ lb }}Accepted, to appear{{ rb }},
+{%- endif %}
+{{ rb }}
+  {%- endcapture -%}
+{%- endif -%}
