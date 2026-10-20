@@ -73,6 +73,7 @@ feed:
 
 exclude:
   - README.md
+  - MAINTAINING.md
   - Gemfile
   - Gemfile.lock
   - vendor
