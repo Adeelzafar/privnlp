@@ -256,6 +256,25 @@ mark.leak {
   .note { grid-column: 1; grid-row: 2; }
 }
 
+/* ---------- Home: researcher ---------- */
+.person {
+  display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 1.5rem 2.5rem;
+  align-items: start; margin-top: 1rem;
+}
+.person-no-photo { grid-template-columns: minmax(0, 1fr); }
+.person-photo {
+  width: 11rem; height: 11rem; object-fit: cover; border-radius: 6px;
+  border: 1px solid var(--rule); background: var(--chip);
+}
+.person-text { max-width: var(--measure); }
+.person h2 { margin: 0 0 0.15rem; }
+.person-role { font-family: var(--font-ui); color: var(--muted); font-size: 0.98rem; margin-bottom: 0.9rem; }
+.person-bio p { margin-bottom: 0.8em; }
+@media (max-width: 40rem) {
+  .person { grid-template-columns: 1fr; }
+  .person-photo { width: 8.5rem; height: 8.5rem; }
+}
+
 /* ---------- Home: sections ---------- */
 .section { padding-top: 1rem; }
 .section > h2, .home-split h2 { margin-top: 1.5rem; }
