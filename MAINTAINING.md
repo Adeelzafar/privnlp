@@ -17,7 +17,7 @@ How to edit, extend and deploy the site. For an overview of the project, see [RE
 | Team | `_data/team.yml` |
 | Research themes (home page) | `_data/themes.yml` |
 | Menu | `_data/navigation.yml` |
-| News | a new file in `_posts/` |
+| Blog posts | a new file in `_posts/` |
 | Tutorials | a new file in `_tutorials/` |
 | PDFs | upload to `assets/pdf/` |
 | Name, email, ORCID, Scholar, funding, analytics | `_config.yml` |
@@ -149,18 +149,20 @@ In `_data/benchmark.yml`, copy a row under `results:` and fill in the numbers:
 
 Use `null` for a value you have not measured yet. To add a new metric column, add an entry under `metrics:` with a new `id`, then use that `id` in the results rows.
 
-### A news item
+### A blog post
 
 Create `_posts/YYYY-MM-DD-short-title.md`:
 
 ```markdown
 ---
-title: "Our paper was accepted at Venue 2027"
+title: "What our planted-patient benchmark measures"
+description: One sentence shown under the title and in the blog list (optional).
 ---
-One or two paragraphs. Links work like [this](https://example.org).
+Write the post in Markdown: paragraphs, **bold**, [links](https://example.org),
+headings with `##`, images and code blocks all work.
 ```
 
-The date comes from the filename. The four newest items appear on the home page.
+The date comes from the file name, and the address becomes `/blog/YYYY/MM/short-title/`. Reading time and your name as author are added automatically; set `author: Name` to credit someone else. A file in `_posts/` with a date in the future is not shown until that date.
 
 ### A tutorial
 
@@ -233,3 +235,4 @@ To undo a bad edit, open the file's **History** on GitHub and restore the previo
 ## Licence
 
 Website code: MIT. Text content: © the authors. Dataset licences are listed on the Datasets page.
+

@@ -1,0 +1,23 @@
+---
+layout: page
+title: Blog
+permalink: /blog/
+prose: false
+intro: Notes on our research, explainers of our papers, and updates from the project.
+---
+{%- comment -%} Posts come from the _posts folder, newest first. {%- endcomment -%}
+<ul class="post-list">
+{%- for post in site.posts %}
+  {%- assign words = post.content | strip_html | number_of_words -%}
+  {%- assign minutes = words | divided_by: 200 | at_least: 1 -%}
+  <li>
+    <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <p class="post-meta">
+      <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %B %Y" }}</time>
+      · {{ minutes }} min read
+    </p>
+    <p>{{ post.description | default: post.excerpt | strip_html | strip | truncatewords: 45 }}</p>
+  </li>
+{%- endfor %}
+</ul>
+<p><a href="{{ '/blog/feed.xml' | relative_url }}">Subscribe with RSS</a></p>

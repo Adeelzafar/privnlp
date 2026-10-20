@@ -1,10 +1,9 @@
-# Menu items, in order. To bring a section back, uncomment its line
-# (and see "Bringing a hidden section back" in MAINTAINING.md).
+# Menu items, in order. To hide a section, put "# " at the start of its line.
 - { title: Home,       url: / }
 - { title: Papers,     url: /papers/ }
 - { title: Code,       url: /code/ }
 - { title: Datasets,   url: /datasets/ }
-- { title: Benchmark,  url: /benchmark/ }
-- { title: Tutorials,  url: /tutorials/ }
-- { title: News,       url: /news/ }
+# - { title: Benchmark,  url: /benchmark/ }
+# - { title: Tutorials,  url: /tutorials/ }
+- { title: Blog,       url: /blog/ }
 - { title: About,      url: /about/ }

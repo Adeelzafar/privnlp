@@ -327,6 +327,17 @@ mark.leak {
 .news-list-full p { margin: 0; color: var(--muted); }
 @media (max-width: 40rem) { .news-list-full li { grid-template-columns: 1fr; } }
 
+/* ---------- Blog ---------- */
+.post-list { list-style: none; padding: 0; margin: 0; max-width: var(--measure); }
+.post-list li { padding-block: 1.5rem; border-top: 1px solid var(--rule); }
+.post-list li:first-child { border-top: 0; padding-top: 0.5rem; }
+.post-list h2 { font-size: 1.3rem; margin: 0 0 0.3rem; }
+.post-list h2 a { text-decoration: none; }
+.post-list h2 a:hover { text-decoration: underline; }
+.post-list p { margin: 0; }
+.post-list p + p { margin-top: 0.5rem; color: var(--muted); }
+.post-meta { font-family: var(--font-ui); font-size: 0.9rem; color: var(--muted); }
+
 /* ---------- Buttons, status, tags ---------- */
 .button {
   display: inline-flex; align-items: center; gap: 0.35rem;
