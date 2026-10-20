@@ -47,7 +47,7 @@ kramdown:
   syntax_highlighter: rouge
   hard_wrap: false
 highlighter: rouge
-permalink: /news/:year/:month/:title/
+permalink: /blog/:year/:month/:title/
 timezone: Europe/Stockholm
 
 plugins:
@@ -69,7 +69,7 @@ defaults:
     values: { layout: tutorial }
 
 feed:
-  path: news/feed.xml
+  path: blog/feed.xml
 
 exclude:
   - README.md
