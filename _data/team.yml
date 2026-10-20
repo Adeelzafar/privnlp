@@ -4,18 +4,14 @@
   role: Postdoctoral researcher, research line lead
   affiliation: Halmstad University
   url: https://adeelzafar.github.io
-  photo: /assets/img/adeel-zafar.jpeg   # upload a square photo with exactly this name
+  photo: /assets/img/adeel-zafar.jpg   # upload a square photo with exactly this name
   home: true                           # show this person on the home page
-  bio: |                               # leave a blank line between paragraphs
-    I am a postdoctoral researcher in machine learning at the School of
-    Information Technology, Halmstad University, where I lead the PrivNLP
-    research line. My work centres on natural language processing, large
-    language models and AI security.
-
-    Before Halmstad, I built named entity recognition systems for LLM policy
-    compliance and led red-teaming of LLM and retrieval-augmented systems in
-    industry. Earlier I was an associate professor and head of department at
-    Riphah International University, and a research fellow at NYU Tandon.
+  bio: |                               # keep it short: shown at the top of the home page
+    I am a postdoctoral researcher in machine learning at Halmstad University,
+    where I lead the PrivNLP research line. I work on natural language
+    processing, large language models and AI security, after roles in industry
+    red-teaming LLM systems and as associate professor at Riphah International
+    University.
 - name: Eric Järpe
   role: Collaborator                            # TODO: title
   affiliation: Halmstad University
