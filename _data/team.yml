@@ -7,7 +7,6 @@
   photo: /assets/img/adeel-zafar.jpeg   # upload a square photo with exactly this name
   home: true                           # show this person on the home page
   bio: |                               # keep it short: shown at the top of the home page
-      bio: |
     I am a researcher working at the intersection of natural language processing
     and AI security. I study what language models remember about the people in
     their training data, how attackers can get it out, and how to stop them.
